@@ -44,7 +44,7 @@ class Rates extends CI_Controller {
         }
     }
 
-    public function reservation($rates_no, $encode_encrypt)
+    public function reservation($rates_no, $encode_encrypt, $status = null)
     {
         if ( !empty($rates_no) && !empty($encode_encrypt) ) {
             if ( !empty($this->session->user_session) ) {
@@ -68,6 +68,21 @@ class Rates extends CI_Controller {
                 } else {
                     redirect('/');
                 }
+            } else {
+                $reservation_link   =   base_url() . 'rates/reservation/' . $rates_no . '/' . $encode_encrypt;
+                $this->session->set_userdata('reservation_link', $reservation_link);
+                redirect('/login');
+            }
+        } else {
+            redirect('/');
+        }  
+    }
+
+    public function notify($rates_no, $encode_encrypt)
+    {
+        if ( !empty($rates_no) && !empty($encode_encrypt) ) {
+            if ( !empty($this->session->user_session) ) {
+                  
             } else {
                 $reservation_link   =   base_url() . 'rates/reservation/' . $rates_no . '/' . $encode_encrypt;
                 $this->session->set_userdata('reservation_link', $reservation_link);
