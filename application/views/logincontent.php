@@ -1,4 +1,3 @@
-
 <div class="card card-cstm">
     <div class="card-body">
         <div class="container">
@@ -19,7 +18,7 @@
                         <button class="btn btn-default" id="btn_login">Log In</button>
                     </div>
                     <div class="padding-top-small createaccountlink">
-                        <a>Create an account</a>
+                        <a href="<?php echo base_url(); ?>signup">Create an account</a>
                     </div>
                 </div>
             </div>

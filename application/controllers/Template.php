@@ -9,6 +9,8 @@ class Template extends CI_Controller {
         $this->curpage = "Template"; 
 
         $this->load->model('Rates_model');
+        $this->load->library('mailgun');
+        include_once'./vendor/autoload.php';
     }
 
     public function index()

@@ -260,6 +260,7 @@ a:hover .rates-book {
     background-position: 33%;
     filter: contrast(83%);
     background-position-y: center;
+    background-attachment: fixed;
 }
 
 .landing-image-child-testimonial {
@@ -273,6 +274,7 @@ a:hover .rates-book {
     background-position: 33%;
     filter: contrast(83%);
     background-position-y: center;
+    background-attachment: fixed;
 }
 
 .landing-image-child-we-are-waiting {
@@ -286,6 +288,7 @@ a:hover .rates-book {
     background-position: 33%;
     filter: contrast(83%);
     background-position-y: bottom;
+    background-attachment: fixed;
 }
 
 .landing-image-child-newsletter {
@@ -298,6 +301,7 @@ a:hover .rates-book {
     -moz-background-size: cover; 
     background-position: 33%;
     filter: contrast(83%);
+    background-attachment: fixed;
 }
 
 .landing-image-text {
