@@ -262,6 +262,162 @@
 
                 });
         <?php
+            } else if ( $curpage == "Signup" ) {
+        ?>
+                let SignupProcess   =   function() {
+                    let txt_fname           =   $('#txt_fname').val();
+                    let txt_lname           =   $('#txt_lname').val();
+                    let txt_email           =   $('#txt_email').val();
+                    let txt_pword           =   $('#txt_pword').val();
+                    let txt_confirm_pword   =   $('#txt_confirm_pword').val();
+                    let txt_contact         =   $('#txt_contact').val();
+                    let txt_address         =   $('#txt_address').val();
+                    let flag                =   0;
+
+                    if ( IsEmpty(txt_fname) ) {
+                        InputError('#txt_fname');
+                        flag = 1;
+                    } else {
+                        if ( CheckSpecialCharacters(txt_fname) ) {
+                            InputError('#txt_fname');
+                            flag = 1;
+                        } else {
+                            InputSuccess('#txt_fname');
+                        }
+                    }
+
+                    if ( IsEmpty(txt_lname) ) {
+                        InputError('#txt_lname');
+                        flag = 1;
+                    } else {
+                        if ( CheckSpecialCharacters(txt_lname) ) {
+                            InputError('#txt_lname');
+                            flag = 1;
+                        } else {
+                            InputSuccess('#txt_lname');
+                        }
+                    }
+
+                    if ( !CheckEmailAddress(txt_email) ) {
+                        InputError('#txt_email');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_email');
+                    }
+
+                    if ( !CheckPasswordLength(txt_pword) ) {
+                        InputError('#txt_pword');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_pword');
+                    }
+
+                    if ( !CheckPasswordLength(txt_confirm_pword) ) {
+                        InputError('#txt_confirm_pword');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_confirm_pword');
+                    }
+
+                    if ( txt_pword != txt_confirm_pword ) {
+                        InputError('#txt_confirm_pword');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_confirm_pword');
+                    }
+
+                    if ( !CheckContactNo(txt_contact) ) {
+                        InputError('#txt_contact');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_contact');
+                    }
+
+                    if ( IsEmpty(txt_address) ) {
+                        InputError('#txt_address');
+                        flag = 1;
+                    } else {
+                        if ( CheckSpecialCharacters(txt_address) ) {
+                            InputError('#txt_address');
+                            flag = 1;
+                        } else {
+                            InputSuccess('#txt_address');
+                        }
+                    }
+
+                    if ( flag == 0 ) {
+                        $.ajax ({
+                            url: '<?php echo base_url(); ?>signup/check_exist_email',
+                            method: "POST",
+                            data: {
+                                txt_email  :   txt_email
+                            },
+                            success:function(data){
+                                if ( data == 0 ) {
+                                    $('#signup_one').hide();
+                                    $('#signup_two').show();
+                                } else if ( data == 1 ) {
+                                    InputError('#txt_email');
+                                    $('#txt_email').val('');
+                                }
+                            },
+                            error:function(){
+                                console.log('ERROR: Please refresh the page!');
+                            }
+                        });
+                    }
+                }
+
+                $(document).on('click', '#btn_signup', function(){
+                    SignupProcess();
+                });
+
+                $(document).on('click', '#btn_submit_verification', function(){
+                    let txt_verification    =   $('#txt_verification').val();
+                    let txt_fname           =   $('#txt_fname').val();
+                    let txt_lname           =   $('#txt_lname').val();
+                    let txt_email           =   $('#txt_email').val();
+                    let txt_pword           =   $('#txt_pword').val();
+                    let txt_contact         =   $('#txt_contact').val();
+                    let txt_address         =   $('#txt_address').val();
+                    let flag                =   0;
+
+                    if ( txt_verification.length < 10 ) {
+                        InputError('#txt_verification');
+                        flag = 1;
+                    } else {
+                        InputSuccess('#txt_verification');
+                    }
+
+                    if ( flag == 0 ) {
+                        $.ajax ({
+                            url: '<?php echo base_url(); ?>signup/check_verification',
+                            method: "POST",
+                            data: {
+                                txt_fname           :   txt_fname,
+                                txt_lname           :   txt_lname,
+                                txt_pword           :   txt_pword,
+                                txt_contact         :   txt_contact,
+                                txt_address         :   txt_address,
+                                txt_email           :   txt_email,
+                                txt_verification    :   txt_verification
+                            },
+                            success:function(data){
+                                if ( data == 0 ) {
+                                    $('#signup_two').hide();
+                                    $('#signup_three').show();
+                                } else if ( data == 1 ) {
+                                    InputError('#txt_verification');
+                                    flag = 1;
+                                }
+                            },
+                            error:function(){
+                                console.log('ERROR: Please refresh the page!');
+                            }
+                        });
+                    }
+                });
+        <?php
             }
         ?>
 

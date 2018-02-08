@@ -18,6 +18,35 @@ h1,h2,h3,h4,h5,h6 {
     margin: 0px;
 }
 
+.signup_login, .signup_success_message {
+    color: #F15854;
+}
+
+.signup_success_title {
+    font-size: 30px;
+    color: #F15854;
+    font-weight: 600;
+    padding-top: 30px;
+}
+
+.verification_message {
+    font-size: 20px;
+}
+
+.verification_label {
+    font-size: 16px;
+    padding-top: 30px;
+    margin: 0;
+    color: #828282;
+    text-align: center;
+}
+
+.verification_textbox {
+    height: 50px !important;
+    text-align: center !important;
+    font-size: 24px !important;
+}
+
 .rates-site-price {
     font-size: 24px;
     color: #f15854;
