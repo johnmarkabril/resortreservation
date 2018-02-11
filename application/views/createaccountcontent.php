@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>Contact Number</label>
-                            <input type="text" class="form-control" placeholder="" id="txt_contact" />
+                            <input type="text" class="form-control" placeholder="" id="txt_contact" maxlength="11" />
                         </div>
                         <div class="col-md-6">
                             <label>Address</label>
@@ -37,7 +37,7 @@
                             <button class="btn btn-default" id="btn_signup">Submit</button>
                         </div>
                     </div>
-                    <div class="row justify-content-md-center" id="signup_two" hidden>
+                    <div class="row justify-content-md-center" id="signup_two">
                         <div class="col-md-12 text-center verification_message">
                             <div>We have sent you an access code</div>
                             <div>via Email for Email verification.</div>
@@ -53,7 +53,7 @@
                             <button class="btn btn-default" id="btn_submit_verification">Submit</button>
                         </div>
                     </div>
-                    <div class="row justify-content-md-center" id="signup_three" hidden>
+                    <div class="row justify-content-md-center" id="signup_three">
                         <div class="col-md-12 text-center">
                             <img class="img-responsive" src="<?php echo base_url(); ?>public/img/success.png" />
                         </div>

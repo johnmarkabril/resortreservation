@@ -55,7 +55,7 @@ class Signup extends CI_Controller {
                 'USERS_LASTNAME'            =>  $txt_lname,
                 'USERS_CONTACT'             =>  $txt_contact,
                 'USERS_ADDRESS'             =>  $txt_address,
-                'USERS_TYPE'                =>  'User',
+                'USERS_TYPE'                =>  '1',
                 'USERS_VERIFIED'            =>  'No',
                 'USERS_VERIFICATION'        =>  $generate_random,
                 'USERS_TIMESTAMP_CREATED'   =>  strtotime(current_date . ' ' . current_time),
@@ -76,7 +76,7 @@ class Signup extends CI_Controller {
         $check_verification     =   $this->Users_model->check_verification($txt_email, $txt_verification);
         $flag                   =   0;
 
-        if ( !empty($check_verification) ) {
+        if ( empty($check_verification) ) {
             $flag   =   1;
         } else {
             $params     =   array(

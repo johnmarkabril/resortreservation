@@ -37,17 +37,14 @@ class Login extends CI_Controller {
 
             if ( !empty($info) ) {
 
-                // $new_line_csv   =   $info->USERS_NO . ' | ' . current_date . ' | ' . current_time . '\n';
-                // $path_file      =   'data/loginhistory.csv';
-                // $this->add_in_csv($path_file, $new_line_csv);
-
                 $this->session->set_userdata('user_session',$info);
+
 
                 if ( !empty($this->session->reservation_link) ) {
                     $flag = $info->USERS_TYPE . '|' . $this->session->reservation_link;
                     $this->session->unset_userdata('reservation_link');
                 } else {
-                    $flag = $info->USERS_TYPE;
+                    $flag = 1;
                 }
                 
             } else {

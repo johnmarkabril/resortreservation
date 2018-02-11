@@ -55,6 +55,17 @@ class Users_model extends CI_Model
         return $row->row(); 
     }
 
+    function get_information_by_no_email($users_no, $users_emailaddress) 
+    {
+        $row    =   $this->db->where($this->users_no, $users_no)
+                             ->where($this->users_emailaddress, $users_emailaddress)
+                             ->where($this->users_deletion, 0)
+                             ->limit(1)
+                             ->get($this->table);
+
+        return $row->row(); 
+    }
+
     function check_verification($users_emailaddress, $users_verification)
     {
         $row    =   $this->db->where($this->users_emailaddress, $users_emailaddress)
@@ -69,6 +80,12 @@ class Users_model extends CI_Model
     function insert($params)
     {
         $this->db->insert($this->table, $params);
+    }
+
+    function update_no($users_no, $params)
+    {
+            $this->db->where($this->users_no, $users_no)
+                     ->update($this->table, $params);
     }
 
     function update_email($users_emailaddress, $params)

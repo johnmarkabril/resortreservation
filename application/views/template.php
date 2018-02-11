@@ -20,6 +20,9 @@
                         case 'Reservation Submittion':
                             echo $content;
                             break;
+                        case 'User Profile':
+                            echo $content;
+                            break;
                         case 'Signup':
                             echo $content;
                             break;

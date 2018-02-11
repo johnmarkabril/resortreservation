@@ -149,7 +149,6 @@
         ?>
                 $(document).on('click', '#btn-submit-reservation', function(){
                     let reservation_fname       =   $('#reservation_fname').val();
-                    let reservation_mi          =   $('#reservation_mi').val();
                     let reservation_lname       =   $('#reservation_lname').val();
                     let reservation_address     =   $('#reservation_address').val();
                     let reservation_email       =   $('#reservation_email').val();
@@ -157,7 +156,6 @@
                     let reservation_date        =   $('#reservation_date').val();
                     let reservation_cottage     =   $('#reservation_cottage').val();
                     let reservation_noguests    =   $('#reservation_noguests').val();
-                    let reservation_slot        =   $('#reservation_slot').val();
                     let reservation_remarks     =   $('#reservation_remarks').val();
                     let flag                    =   0;
 
@@ -170,20 +168,6 @@
                             flag = 1;
                         } else {
                             InputSuccess('#reservation_fname');
-                        }
-                    }
-
-                    if ( !IsEmpty(reservation_mi) ) {
-                        if ( !CheckMiddleInitial(reservation_mi) ) {
-                            InputError('#reservation_mi');
-                            flag = 1;
-                        } else {
-                            if ( reservation_mi.length > 2 ) {
-                                InputError('#reservation_mi');
-                                flag = 1;
-                            } else {
-                                InputSuccess('#reservation_mi');
-                            }
                         }
                     }
 
@@ -239,7 +223,7 @@
                         }
                     }
 
-                    // if ( flag == 0 ) {
+                    if ( flag == 0 ) {
                         swal({
                             title: 'Proceed to payment?',
                             text: "You won't be able to undo this reservation.",
@@ -258,12 +242,15 @@
                                 );
                             }
                         });
-                    // }
+                    }
 
                 });
         <?php
             } else if ( $curpage == "Signup" ) {
         ?>
+                $('#signup_two').hide();
+                $('#signup_three').hide();
+
                 let SignupProcess   =   function() {
                     let txt_fname           =   $('#txt_fname').val();
                     let txt_lname           =   $('#txt_lname').val();
@@ -350,7 +337,12 @@
                             url: '<?php echo base_url(); ?>signup/check_exist_email',
                             method: "POST",
                             data: {
-                                txt_email  :   txt_email
+                                txt_fname   :   txt_fname,
+                                txt_lname   :   txt_lname,
+                                txt_email   :   txt_email,
+                                txt_pword   :   txt_pword,
+                                txt_contact :   txt_contact,
+                                txt_address :   txt_address
                             },
                             success:function(data){
                                 if ( data == 0 ) {
@@ -374,15 +366,10 @@
 
                 $(document).on('click', '#btn_submit_verification', function(){
                     let txt_verification    =   $('#txt_verification').val();
-                    let txt_fname           =   $('#txt_fname').val();
-                    let txt_lname           =   $('#txt_lname').val();
                     let txt_email           =   $('#txt_email').val();
-                    let txt_pword           =   $('#txt_pword').val();
-                    let txt_contact         =   $('#txt_contact').val();
-                    let txt_address         =   $('#txt_address').val();
                     let flag                =   0;
 
-                    if ( txt_verification.length < 10 ) {
+                    if ( IsEmpty(txt_verification) ) {
                         InputError('#txt_verification');
                         flag = 1;
                     } else {
@@ -394,11 +381,6 @@
                             url: '<?php echo base_url(); ?>signup/check_verification',
                             method: "POST",
                             data: {
-                                txt_fname           :   txt_fname,
-                                txt_lname           :   txt_lname,
-                                txt_pword           :   txt_pword,
-                                txt_contact         :   txt_contact,
-                                txt_address         :   txt_address,
                                 txt_email           :   txt_email,
                                 txt_verification    :   txt_verification
                             },
@@ -418,6 +400,66 @@
                     }
                 });
         <?php
+            } else if ( $curpage == "User Profile" ) {
+        ?>
+                $(document).on('click', '#btn_change_password', function(){
+                    let txt_current_password        =   $('#txt_current_password').val();
+                    let txt_new_password            =   $('#txt_new_password').val();
+                    let txt_confirm_password        =   $('#txt_confirm_password').val();
+                    let flag                        =   0;
+
+                    if ( txt_current_password.length < 6 ) {
+                        InputError('#txt_current_password');
+                        flag =  1;
+                    } else {
+                        InputSuccess('#txt_current_password');
+                    }
+
+                    if ( txt_new_password.length < 6 ) {
+                        InputError('#txt_new_password');
+                        flag =  1;
+                    } else {
+                        InputSuccess('#txt_new_password');
+                    }
+
+                    if ( txt_confirm_password.length < 6 ) {
+                        InputError('#txt_confirm_password');
+                        flag =  1;
+                    } else {
+                        InputSuccess('#txt_confirm_password');
+                    }
+
+                    if ( txt_new_password != txt_confirm_password ) {
+                        InputError('#txt_confirm_password');
+                        flag =  1;
+                    } else {
+                        InputSuccess('#txt_confirm_password');
+                    }
+
+                    if ( flag == 0 ) {
+                        $.ajax ({
+                            url: '<?php echo base_url(); ?>user/change_password',
+                            method: "POST",
+                            data: {
+                                txt_current_password    : txt_current_password,
+                                txt_new_password        : txt_new_password,
+                                txt_confirm_password    : txt_confirm_password
+                            },
+                            success:function(data){
+                                if ( data == 0 ) {
+                                    location.reload();
+                                } else { 
+                                    InputError('#txt_current_password');
+                                }
+                            },
+                            error:function(){
+                                console.log('ERROR: Please refresh the page!');
+                            }
+                        });
+                    }
+
+                });
+        <?php
             }
         ?>
 
@@ -427,7 +469,6 @@
 
                 $(document).on('click', '#btn_reservation_check', function(){
                     let reservation_datepicker  =   $('#reservation_datepicker').val();
-                    let reservation_timeslot    =   $('#reservation_timeslot').val();
                     let flag                    =   0;
 
                     if ( IsEmpty(reservation_datepicker) ) {
@@ -437,15 +478,8 @@
                         InputSuccess('#reservation_datepicker');
                     }
 
-                    if ( IsEmpty(reservation_timeslot) ) {
-                        InputError('#reservation_timeslot');
-                        flag = 1;
-                    } else {
-                        InputSuccess('#reservation_timeslot');
-                    }
-
                     if ( flag == 0 ) {
-                        let concat_string   =   reservation_datepicker + '|' + reservation_timeslot;
+                        let concat_string   =   reservation_datepicker;
                         $.ajax ({
                             url: '<?php echo base_url(); ?>template/encryption_method',
                             method: "POST",
@@ -465,4 +499,5 @@
             }
         ?>
     });
+
 </script>

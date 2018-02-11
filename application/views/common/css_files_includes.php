@@ -14,4 +14,6 @@
 <!-- PLUGINS -->
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/plugins/datepicker/bootstrap-datepicker.min.css"/>
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/plugins/daterangepicker/daterangepicker.css"/>
+
+<link rel="stylesheet" href="<?php echo base_url();?>public/css/plugins/fullcalendar/fullcalendar.min.css">
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/plugins/sweetalert/sweetalert.min.css"/>

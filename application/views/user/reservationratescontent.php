@@ -12,15 +12,11 @@
                         <div class="col-md-12">
                             <div class="reservation-form-title">Personal Information</div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <label><span class="form-required">*</span> First Name</label>
                             <input type="text" class="form-control" id="reservation_fname" placeholder="John" value="<?php echo $user_info->USERS_FIRSTNAME; ?>" />
                         </div>
-                        <div class="col-md-2">
-                            <label>M.I.</label>
-                            <input type="text" class="form-control" id="reservation_mi" placeholder="X" />
-                        </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <label><span class="form-required">*</span> Last Name</label>
                             <input type="text" class="form-control" id="reservation_lname" placeholder="Doe" value="<?php echo $user_info->USERS_LASTNAME; ?>" />
                         </div>
@@ -44,17 +40,13 @@
                             <label><span class="form-required">*</span> Check-in date</label>
                             <input type="text" class="form-control" id="reservation_date" value="<?php echo $reservation_date; ?>" readonly />
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-9">
                             <label><span class="form-required">*</span> Name of cottage</label>
                             <input type="text" class="form-control" id="reservation_cottage" value="<?php echo $rates->RATES_NAME; ?>" readonly />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <label><span class="form-required">*</span> Guest(s)</label>
                             <input type="number" class="form-control" id="reservation_noguests" min="0" placeholder="0" />
-                        </div>
-                        <div class="col-md-2">
-                            <label><span class="form-required">*</span> Time</label>
-                            <input type="text" class="form-control" id="reservation_slot" value="<?php echo $reservation_slot; ?>" readonly />
                         </div>
                         <div class="col-md-12">
                             <label>Remarks</label>
@@ -70,11 +62,42 @@
                         <div class="col-md-12 padding-top-large">
 
                             <?php
-                                $tax    =   ( $rates->RATES_PRICE * 0.12 );
-                                $half   =   ( $tax / 2 );
+                                $reservation_price  =   $rates->RATES_PRICE / 2;
+                                $tax                =   $reservation_price * 0.12;
+                                $processing_fee     =   $reservation_price * 0.20;
+
+                                $total_price        =   $reservation_price + $tax + $processing_fee;
                             ?>
-                            <div>Price: <span class="reservation-form-title">₱ <?php echo $rates->RATES_PRICE; ?></span></div>
-                            <div>Reservation + TAX(12%): <span class="reservation-form-title">₱ <?php echo ( ($rates->RATES_PRICE / 2) + $tax); ?></span></div>
+
+                            <div class="reservation-payment-fees">
+                                Payment Fees
+                            </div>
+
+                            <table class="w-100">
+                                <tr>
+                                    <td class="w-40 reservation-price-title">Price</td>
+                                    <td class="w-60 reservation-price-fee align-right">₱ <?php echo $rates->RATES_PRICE; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-40 reservation-price-title">Reservation Price</td>
+                                    <td class="w-60 reservation-price-fee align-right">₱ <?php echo $reservation_price; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-40 reservation-price-title">12% TAX</td>
+                                    <td class="w-60 reservation-price-fee align-right">₱ <?php echo $tax; ?></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-40 reservation-price-title">20% Processing Fee</td>
+                                    <td class="w-60 reservation-price-fee align-right">₱ <?php echo $processing_fee; ?></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><hr/></td>
+                                </tr>
+                                <tr>
+                                    <td class="w-40 reservation-price-title">Total</td>
+                                    <td class="w-60 reservation-price-fee align-right">₱ <?php echo $total_price; ?></td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="col-md-12 padding-top-large">
                             <div class="text-center padding-bottom-small">Pay 50% of the price and the other 50% at the resort</div>
@@ -85,16 +108,20 @@
                                 ">
                                 <!-- <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> -->
 
+                                <?php
+                                    $encode         =   $rates->RATES_NO . '|' . $user_info->USERS_NO . '|' . $reservation_date . '|' . $total_price;
+                                    $return_link    =   'http://localhost/resortreservation/rates/notify/' . bin2hex($encode);
+                                ?>
+
                                 <input type="hidden" name="business" value="antigoresortreservation@gmail.com">
                                 <input type="hidden" name="custom" value="" id="custom_js_rts<?php echo $rates->RATES_NO; ?>">
                                 <input type="hidden" name="item_name" value="<?php echo $rates->RATES_NAME; ?>">
                                 <input type="hidden" name="quantity" value="1">
-                                <input type="hidden" name="tax" value="<?php echo $tax; ?>">
                                 <input type="hidden" name="currency_code" value="PHP">
-                                <input type="hidden" name="amount"  id="item_price" value="<?php echo $half; ?>">
-                                <input type="hidden" name="return" value="http://localhost/resortreservation/rates/reservation/3/4a616e756172792032382c20323031387c504d/success">
-                                <input type='hidden' name='notify_url' value='http://localhost/resortreservation/rates/notify/3/4a616e756172792032382c20323031387c504d'>
-                                <input type="hidden" name="cancel_return" value="http://localhost/resortreservation/rates/reservation/3/4a616e756172792032382c20323031387c504d/cancel">
+                                <input type="hidden" name="amount"  id="item_price" value="<?php echo $total_price; ?>">
+                                <input type="hidden" name="notify_url" value="<?php echo $return_link; ?>">
+                                <input type='hidden' name='return' value='<?php echo $return_link; ?>'>
+                                <input type="hidden" name="cancel_return" value="<?php echo 'http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]'; ?>">
                                 <button type="submit" class="btn btn-default" name="btn_submit_rts<?php echo $rates->RATES_NO; ?>">Reserve now</button>
                             </form>
                         </div>

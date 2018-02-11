@@ -10,9 +10,9 @@
                     <label>Password</label>
                     <input type="password" class="form-control" placeholder="••••••••" id="txt_password" />
 
-                    <div class="forgotpassword">
+                   <!--  <div class="forgotpassword">
                         <a>Forgot your password?</a>
-                    </div>
+                    </div> -->
 
                     <div class="padding-top-small">
                         <button class="btn btn-default" id="btn_login">Log In</button>
