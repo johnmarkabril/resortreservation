@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2018 at 12:08 AM
+-- Generation Time: Feb 11, 2018 at 12:07 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -46,7 +46,8 @@ INSERT INTO `rates` (`RATES_NO`, `RATES_NAME`, `RATES_UNITNO`, `RATES_DESCRIPTIO
 (2, 'FISHING VILLA', '', 'Etiam et nisi non diam maximus imperdiet. Curabitur tempor rutrum justo ut imperdiet. In semper, nibh nec dictum aliquam, purus dui laoreet mauris, eget accumsan neque quam a quam. Sed ultricies dignissim ex, ultrices elementum dui vehicula tempor. Duis sodales urna eget dictum feugiat. Duis ut molestie nunc. Etiam gravida ut odio vitae faucibus. Sed maximus, elit vitae tristique vehicula, ante lorem sollicitudin libero, pulvinar elementum lorem ex ut leo. Morbi bibendum, nisi ac euismod condimentum, nisl tellus hendrerit metus, non condimentum libero justo luctus orci. Sed vel eros auctor, elementum quam nec, consectetur felis.\n\nDuis mattis diam id pellentesque tristique. Morbi consectetur lorem diam, id vehicula tortor dapibus ut. Integer vulputate ullamcorper ultricies. Etiam porttitor vulputate libero, at dictum lorem tristique eget. Mauris porta enim sed consequat ultrices. Sed tristique aliquet maximus. Duis semper metus elit, a malesuada metus elementum quis. Cras in porttitor mauris.\n\nAenean dignissim tortor at facilisis dictum. Ut odio mi, viverra non faucibus a, ultrices sit amet libero. In ornare augue eget maximus tempor. Donec nec ipsum urna. Mauris euismod velit nec rhoncus gravida. Mauris eu odio quis nisi cursus fermentum. Mauris nisi nisi, sodales et iaculis quis, mattis sed quam. Nulla non libero elit.', 'rates-2.jpg', '5000', '1', 0),
 (3, 'LARGE COTTAGE', '', 'Suspendisse quis aliquet mi, eu sagittis ante. Phasellus sit amet convallis purus, vitae volutpat purus. Duis interdum, augue et dignissim lobortis, nisl dolor semper mi, vitae gravida nisl diam in tellus. Maecenas ultrices sit amet justo non ornare. Fusce porttitor, leo et laoreet egestas, mi sapien varius nulla, eget aliquet ex orci vel ligula. Quisque a odio ante. Aenean eget massa magna. Sed in sollicitudin quam. Fusce a turpis sit amet ligula accumsan gravida. Sed nec ex sapien.\n\nAenean pulvinar, enim vitae tristique mattis, metus purus feugiat purus, quis vulputate nisl nisi vel lectus. Nam nec sem est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus hendrerit nulla massa, a vestibulum ante aliquet ut. Sed a elementum leo. Donec non nisi feugiat urna gravida interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut at metus elit. Ut nunc leo, condimentum id risus pretium, feugiat finibus eros. Mauris et dui lacus. Mauris in enim vitae arcu sagittis bibendum.\n\nNulla et eleifend lorem. Vivamus porttitor facilisis felis pharetra ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tempor vel quam eu varius. Etiam ligula massa, dapibus a fermentum nec, convallis ac erat. Sed tempus vel lectus sit amet ullamcorper. Phasellus efficitur turpis et porttitor dapibus. Vestibulum malesuada sem et hendrerit cursus. Aenean fermentum egestas malesuada.', 'rates-3.jpg', '500', '3', 0),
 (4, 'SMALL COTTAGE', '', 'Aenean pulvinar, enim vitae tristique mattis, metus purus feugiat purus, quis vulputate nisl nisi vel lectus. Nam nec sem est. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus hendrerit nulla massa, a vestibulum ante aliquet ut. Sed a elementum leo. Donec non nisi feugiat urna gravida interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut at metus elit. Ut nunc leo, condimentum id risus pretium, feugiat finibus eros. Mauris et dui lacus. Mauris in enim vitae arcu sagittis bibendum.', 'rates-4.jpg', '700', '', 0),
-(5, 'PAVILION', '', 'Aenean dignissim tortor at facilisis dictum. Ut odio mi, viverra non faucibus a, ultrices sit amet libero. In ornare augue eget maximus tempor. Donec nec ipsum urna. Mauris euismod velit nec rhoncus gravida. Mauris eu odio quis nisi cursus fermentum. Mauris nisi nisi, sodales et iaculis quis, ', 'rates-5.jpg', '8000', '', 0);
+(5, 'PAVILION', '', 'Aenean dignissim tortor at facilisis dictum. Ut odio mi, viverra non faucibus a, ultrices sit amet libero. In ornare augue eget maximus tempor. Donec nec ipsum urna. Mauris euismod velit nec rhoncus gravida. Mauris eu odio quis nisi cursus fermentum. Mauris nisi nisi, sodales et iaculis quis, ', 'rates-5.jpg', '8000', '', 0),
+(6, 'Testing', '', 'safdasfdasfdasdf', 'rates-6.jpg', '10000', '', 0);
 
 -- --------------------------------------------------------
 
@@ -74,8 +75,13 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`RES_NO`, `RES_USERSNO`, `RES_RATESNO`, `RES_DATETO`, `RES_TIMESTAMPDATETO`, `RES_TIMESLOT`, `RES_TOTALPRICE`, `RES_PAIDSTATUS`, `RES_APPROVEDADMIN`, `RES_TIMESTAMPINSERT`, `RES_TIMESTAMPUPDATE`, `RES_DELETION`) VALUES
-(1, 1, 3, 'December 31, 2017', '', 'PM', '500', 'Not yet', 'Not yet', '', '', 0),
-(2, 1, 3, 'December 31, 2017', '', 'PM', '500', 'Not yet', 'Not yet', '', '', 0);
+(1, 6, 2, 'February 14, 2018', '', 'PM', '500', 'Not yet', 'Not yet', '', '', 0),
+(2, 6, 3, 'February 16, 2018', '', 'PM', '4000', 'Not yet', 'Not yet', '', '', 0),
+(3, 6, 1, 'February 20, 2018', '', 'PM', '4000', 'Not yet', 'Not yet', '', '', 0),
+(4, 3, 3, 'February 27, 2018', '1519660800', '', '8700', 'Not yet', 'Not yet', '1518330900', '', 0),
+(5, 2, 6, 'February 12, 2018', '1518364800', '', '3300', 'Not yet', 'Not yet', '1518331080', '', 0),
+(6, 4, 6, 'February 12, 2018', '1518364800', '', '462', 'Not yet', 'Not yet', '1518331140', '', 0),
+(7, 3, 8, 'February 12, 2018', '1518364800', '', '330', 'Not yet', 'Not yet', '1518344820', '', 0);
 
 -- --------------------------------------------------------
 
@@ -92,10 +98,11 @@ CREATE TABLE `users` (
   `USERS_LASTNAME` varchar(100) NOT NULL,
   `USERS_CONTACT` varchar(15) NOT NULL,
   `USERS_ADDRESS` varchar(500) NOT NULL,
-  `USERS_VERIFICATION` varchar(50) NOT NULL,
   `USERS_TYPE` varchar(50) NOT NULL,
-  `USERS_DATE` varchar(50) NOT NULL,
-  `USERS_TIME` varchar(50) NOT NULL,
+  `USERS_VERIFIED` varchar(10) NOT NULL,
+  `USERS_VERIFICATION` varchar(50) NOT NULL,
+  `USERS_TIMESTAMP_CREATED` varchar(50) NOT NULL,
+  `USERS_TIMESTAMP_UPDATED` varchar(50) NOT NULL,
   `USERS_DELETION` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -103,9 +110,15 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`USERS_NO`, `USERS_EMAILADDRESS`, `USERS_PASSWORD`, `USERS_FIRSTNAME`, `USERS_MIDDLEINITIAL`, `USERS_LASTNAME`, `USERS_CONTACT`, `USERS_ADDRESS`, `USERS_VERIFICATION`, `USERS_TYPE`, `USERS_DATE`, `USERS_TIME`, `USERS_DELETION`) VALUES
-(1, 'user@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Ojing', 'R', 'Labongray', '09123456789', '1234 Address St. Valenzuela City', 'Yes', '1', 'December 03, 2017', '06:29 PM', 0),
-(2, 'admin@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Admin', 'T', 'Developer', '09123456789', '1234 Address St. Valenzuela City', 'Yes', '2', 'December 03, 2017', '06:29 PM', 0);
+INSERT INTO `users` (`USERS_NO`, `USERS_EMAILADDRESS`, `USERS_PASSWORD`, `USERS_FIRSTNAME`, `USERS_MIDDLEINITIAL`, `USERS_LASTNAME`, `USERS_CONTACT`, `USERS_ADDRESS`, `USERS_TYPE`, `USERS_VERIFIED`, `USERS_VERIFICATION`, `USERS_TIMESTAMP_CREATED`, `USERS_TIMESTAMP_UPDATED`, `USERS_DELETION`) VALUES
+(1, 'user@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Ojing', 'R', 'Labongray', '09123456789', '1234 Address St. Valenzuela City', '1', 'Yes', '', '1518225780', '', 0),
+(2, 'admin@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'Admin', 'T', 'Developer', '09123456789', '1234 Address St. Valenzuela City', '2', 'Yes', '', '1518225780', '', 0),
+(3, 'kajshdf@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'asd', '', 'sdfasdfasdf', '09123456789', 'kjahsdfkjhaskdjfh', '1', 'No', '93997192', '1518225780', '', 0),
+(4, 'lkajsdlf@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'lasdf', '', 'lkjasldjf', '09208317004', 'kjahsdfkhaskdjhf', '1', 'No', '32589721', '1518225960', '', 0),
+(5, 'dfasdfasdf@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'asdfasdf', '', 'asdfasdfas', '09321321321', 'testing', '1', 'Yes', '', '1518226020', '', 0),
+(6, 'frrhmgrgrio@gmail.com', '6b7330782b2feb4924020cc4a57782a9', 'Farrah Mae', '', 'Gregorio', '09484416546', 'ASDflasjdfjasdlfkjalsdjfljasdfljalsdfasdfasdf', '1', 'Yes', '', '1518255480', '', 0),
+(7, 'asdfasdfasdf@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'asdfasdf', '', 'asdf', '09213213213', 'asdfasdfasdfasdfasdf', '1', 'Yes', '', '1518270420', '', 0),
+(8, 'asdf@gmail.com', 'ae2b1fca515949e5d54fb22b8ed95575', 'sdfg', '', 'sdfgsdgf', '09546546546', 'asdfasdfasfasdf', '1', 'Yes', '', '1518344580', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -137,17 +150,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `rates`
 --
 ALTER TABLE `rates`
-  MODIFY `RATES_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `RATES_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `RES_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `RES_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `USERS_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `USERS_NO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
